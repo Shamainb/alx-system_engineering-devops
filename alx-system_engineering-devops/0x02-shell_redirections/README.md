@@ -1,1 +1,1 @@
-shell redirections I/O filters
+0x02 shell I/O redirections filters readme file

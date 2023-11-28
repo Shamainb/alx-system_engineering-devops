@@ -11,6 +11,5 @@ while [ $minute -le 59 ]; do
 printf "%02d:%02d\n" $hour $minute
 ((minute++))
 done
-minute=0
 ((hour++))
 done

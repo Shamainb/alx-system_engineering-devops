@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
-sudo systemct1 stop nginx
-sudo chown -R nginx:nginx /etc/nginx /var/log/nginx /var/lib/nginx /var/www/html
-sudo sed -i 's/user\s*nginx;/user nginx nginx;/' /etc/nginx/nginx.conf
-sudo sed -i 's/listen\s*80;/listen 8080;/g' /etc/nginx/sites-available/default
-sudo systemctl start nginx
+if ! command -v nginx &> /dev/null
+	then
+		echo "Nginx is not installed. Installing..."
+		apt-get update
+		apt-get install nginx -y
+fi
+
+sed -i 's/user\s*nginx;/user nginx;/' /etc/nginx/nginx.conf
+sed -i 's/listen\s*80;/listen 8080;/' /etc/nginx/sites-available/default
+service nginx restart
+echo "Nginx configured to run as nginx user and listen on port 8080."

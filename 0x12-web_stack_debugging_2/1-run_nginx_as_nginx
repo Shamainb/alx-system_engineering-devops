@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+sudo systemct1 stop nginx
+sudo chown -R nginx:nginx /etc/nginx /var/log/nginx /var/lib/nginx /var/www/html
+sudo sed -i 's/user\s*nginx;/user nginx nginx;/' /etc/nginx/nginx.conf
+sudo systemctl start nginx
